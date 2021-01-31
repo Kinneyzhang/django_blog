@@ -1,0 +1,26 @@
+{% extends 'blog/layout_post.html' %}
+
+{% block post %}
+  <header>
+    <h1 class="lead text-center font-weight-normal">{{post.title}}</h1>
+  </header>
+  <div id="post-info">
+    <p>「
+      <!-- <span>分类: {{post.category}} · </span> -->
+      <span>字数: {{post.count}} · </span>
+      <span class="leancloud_visitors" id="{% url 'blog:post' post.slug %}" data-flag-title="{{post.title}}">
+        <span class="post-meta-item-text">阅读 </span>
+        <span class="leancloud-visitors-count">...</span>次</span>
+        」</p>
+  </div>
+  <div id="main-content" class="card-text">
+    {% autoescape off %}
+      {{post.content}}
+    {% endautoescape %}
+    <div class="text-right">
+      <span class="text-mute small">
+        发布于 {{ post.timestamp|date:"Y-m-d" }}
+      </span>
+    </div>
+  </div>
+{% endblock %}

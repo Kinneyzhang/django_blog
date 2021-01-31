@@ -1,0 +1,24 @@
+{% extends 'blog/plan.html' %}
+
+{% block plan_specific %}
+  <form action="/plan/year/" method="post">
+    {% csrf_token %}
+    <div class="form-group d-flex">
+      <i class="far fa-calendar"></i>&nbsp;&nbsp;
+      <input type="text" name="year" class="form-control"
+             placeholder="2020" maxlength="4">&nbsp;&nbsp;
+      <button type="submit" class="btn btn-outline-secondary btn-sm active">
+        Submit</button>
+    </div>
+  </form>
+  {% if error %}
+    <div class="alert alert-primary" role="alert">
+      请输入正确格式的 "年" ！
+    </div>
+  {% endif %}
+  {% if year %}
+    <div class="border-top mt-4 pt-3">
+      <h4 class="text-dark font-weight-bold">Yearly Log {{year}}</h4>
+    </div>
+  {% endif %}
+{% endblock %}

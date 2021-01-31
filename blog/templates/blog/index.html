@@ -1,0 +1,29 @@
+{% extends 'blog/layout_page.html' %}
+
+{% block main %}
+  <main class="my-3 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+    <div id="post-content">
+      {% for post in posts %}
+        <div class="card post-div">
+          <div class="card-body">
+            <h3><a href="{% url 'blog:post' post.slug %}">
+              {{post.title}}</a></h3>
+            <p class="card-text">{{post.abstract}}
+              <a href="{% url 'blog:post' post.slug %}">「阅读全文」</a>
+            </p>
+            <div>
+              <a class="text-secondary" href="{% url 'blog:category' post.category %}">
+                <i class="fas fa-tags"> {{post.category}}</i></a>
+              {% for tag in post.tags.all %}
+                <a class="text-secondary" href="{% url 'blog:tag' tag %}">
+                  <i class="fas fa-hashtag">{{tag}}</i></a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% block adsense %}{% endblock %}
+    {% block comment %}{% endblock %}
+  </main>
+{% endblock %}

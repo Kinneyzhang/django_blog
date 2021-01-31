@@ -1,0 +1,5 @@
+{% extends 'blog/layout_archive.html' %}
+
+{% block archive_url %}
+  <a href="{% url 'blog:tag' name %}#post_{{post.id}}">{{post.title}}</a>
+{% endblock %}

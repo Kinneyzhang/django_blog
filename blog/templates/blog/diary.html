@@ -1,0 +1,19 @@
+{% extends 'blog/layout_page.html' %}
+
+{% block post %}
+  <h3 class="lead">记录思考，思考的是关于一切人事物</h3>
+  {% for diary in diaries %}
+    <div class="mt-2 border-top pt-3">
+      <div>
+        <span class="text-primary">
+          <i class="fas fa-calendar-alt"></i>
+          {{diary.timestamp|date:"Y-m-d H:i:s"}}</span>
+      </div>
+      <div>
+        {% autoescape off %}
+          {{diary.content}}
+        {% endautoescape %}
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-body">
+    <h3>分类</h3>
+    <div class="card-text ml-1">
+      {% for category in categories %}
+        <a href="{% url 'blog:category' category.name %}" class="plain-a">
+          <i class="fas fa-tags small"> {{category.name}}</i></a><br>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <h3>标签</h3>
+    <div class="card-text ml-1">
+      {% for tag in tags %}
+        <span><a href="{% url 'blog:tag' tag.name %}" class="plain-a">
+          <i class="fas fa-hashtag small">{{tag.name}}</i>
+        </a></span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <h3>友链</h3>
+    <div class="card-text ml-1">
+      {% for friend in friends %}
+        <span><a href="{{friend.link}}" class="plain-a">
+          <small><b>{{friend.name}}</b></small>
+        </a></span>
+      {% endfor %}
+    </div>
+  </div>
+</div>

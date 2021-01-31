@@ -1,0 +1,9 @@
+{% extends 'blog/layout_base.html' %}
+{% load templatetags %}
+
+{% block side %}
+  {% categories as categories %}
+  {% tags as tags %}
+  {% friends as friends %}
+  {% include 'blog/block_sidebar.html' %}
+{% endblock %}

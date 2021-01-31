@@ -1,0 +1,40 @@
+{% extends 'blog/layout_page.html' %}
+
+{% block main %}
+  <main class="my-3 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+    <div id="archive-menu">
+      <div class="card">
+        <div class="card-body">
+          <h4>{{archive_type|capfirst}} Archive: {{name}}</h4>
+          <ul class="card-text">
+            {% for post in posts %}
+              <li>{% block archive_url %}
+                <a href="{% url '#' name %}#post_{{post.id}}">
+                  {{post.title}}</a>
+              {% endblock %}</li>
+            {% endfor %}</ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      {% for post in posts %}
+        <div class="card">
+          <div class="card-body">
+            <h2 id="post_{{post.id}}" class="text-center">{{post.title}}</h2>
+            <div id="main-content card-text">
+              {% autoescape off %}
+                {{post.content}}
+              {% endautoescape %}
+            </div>
+            <div class="text-right">
+              <span class="text-mute small">
+                发布于 {{ post.timestamp|date:"Y-m-d" }}
+              </span>
+            </div>
+          </div>          
+        </div>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock %}
+

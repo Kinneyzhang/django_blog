@@ -1,0 +1,13 @@
+{% extends 'blog/layout_page.html' %}
+
+{% block post %}
+  <div>
+    <p class="lead border-bottom pb-3">那些愉悦我、感动我、激励我的歌曲和MV。</p>
+    {% for video in videos %}
+      <div>
+        <h5 class="text-primary">{{ video.name }}</h5>
+        <div class="iframe-container">{{ video.iframe|safe }}</div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

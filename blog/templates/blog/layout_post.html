@@ -1,0 +1,17 @@
+{% extends 'blog/layout_base.html' %}
+{% load templatetags %}
+
+{#% block adsense %#}
+  {#% include 'blog/block_adsense.html' %#}
+{#% endblock %#}
+
+{% block comment %}
+  {% include 'blog/block_comment.html' %}
+{% endblock %}
+
+{% block side %}
+  {% categories as categories %}
+  {% tags as tags %}
+  {% friends as friends %}
+  {% include 'blog/block_sidebar.html' %}
+{% endblock %}
