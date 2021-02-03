@@ -42,6 +42,9 @@ def post(request, slug):
 def about(request):
     return render(request, 'blog/about.html')
 
+def sponsor(request):
+    return render(request, 'blog/sponsor.html')
+
 def message(request):
     return render(request, 'blog/message.html')
 
