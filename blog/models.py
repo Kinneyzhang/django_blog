@@ -2,8 +2,6 @@
 from django.db import models
 from mdeditor.fields import MDTextField
 
-# Create your models here.
-
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
@@ -63,26 +61,21 @@ class Diary(models.Model):
     content = MDTextField()
 
 class PlanCategory(models.Model):
-    # 对应 Bujo 集子： Daily Log， Weekly Log， Monthly Log ...
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
     
 class Plan(models.Model):
-    BUJO_TYPE = (
-        ('-', 'note'),
-        ('∘', 'event'),
-        ('·', 'todo'),
-        ('>', 'migrate'),
-        ('<', 'planned'),
-        ('x', 'done'),
+    PLAN_STATUS = (
+        ('todo', 'todo'),
+        ('done', 'done'),   
     )
-    name = models.CharField(max_length=500)
+    name = models.CharField(max_length=100)
+    status = models.CharField(max_length=4, choices=PLAN_STATUS)
     category = models.ForeignKey(
         PlanCategory,
         on_delete=models.CASCADE,
         null=True,
     )
-    status = models.CharField(max_length=5, choices=BUJO_TYPE, default='·')
-    timevalue = models.CharField(max_length=10)
+    timestamp = models.DateTimeField(auto_now_add=True)

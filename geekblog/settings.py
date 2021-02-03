@@ -153,7 +153,3 @@ MDEDITOR_CONFIGS = {
     'lineNumbers': False  # 行号
     }
 }
-
-BOOTSTRAP4 = {
-    'include_jquery': True,
-}

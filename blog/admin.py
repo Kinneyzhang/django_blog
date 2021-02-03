@@ -36,7 +36,9 @@ class PlanCategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 class PlanAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'status', 'timevalue')
+    list_display = ('name', 'category', 'status', 'timestamp')
+    list_editable = ('status',)
+    list_filter = ('category',)
     
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
